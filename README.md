@@ -1,14 +1,12 @@
-<span style="font-family:Fira Code;">
-
 # MultiStreamGUI
 
-A simple GUI for Streaming on multiple platforms using a NGINX RTMP server.
+A simple GUI for Streaming on multiple platforms with OBS using a NGINX RTMP server.
 
 ## Dependencies
 
 You need to have Stunnel installed and configured. (for Facebook live streaming)
 
-### Steps to prepare Stunnel
+### Configure Stunnel
 
 1. [Download Stunnel](https://www.stunnel.org/downloads.html)
 2. Install Stunnel and run it with **stunnel GUI start**
@@ -23,11 +21,11 @@ You need to have Stunnel installed and configured. (for Facebook live streaming)
         verifyChain = no
     ```
 
-5. Reload Stunnel Configuration from Configuration -> Reload Configuration
+5. Reload Stunnel Configuration from Configuration -> Reload Configuration and you are done.
 
 ## How to use
 
-1. Download the files
+1. [Download and extract the latest release](https://github.com/mihaif7/MultiStreamGUI/releases)
 2. Run MultiStreamGUI.exe
 3. Enter your RTMP Keys from Youtube/Facebook
 4. Start Stunnnel and NGINX
@@ -35,6 +33,4 @@ You need to have Stunnel installed and configured. (for Facebook live streaming)
 6. Click start streaming and enjoy :)
 
 <br>
-If there is anything i can improve please let me know.
-
-</span>
+If there is anything I can improve, please let me know.
