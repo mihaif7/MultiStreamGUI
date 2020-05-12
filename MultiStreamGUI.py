@@ -19,9 +19,9 @@ layout = [[sg.Text(' ')],
           #   [sg.Text('Platform #4', size=(15, 1)), sg.InputText(key="-IN3-"), sg.Button('Remove')],
           #   [sg.Text('Platform #5', size=(15, 1)), sg.InputText(key="-IN5-"), sg.Button('Remove')],
           [sg.Text(' ')],
-          [sg.Button('Start', button_color=('white', 'springgreen4')), sg.Button('Restart NGINX', button_color=('white', 'black'), disabled=True),
-           sg.Button('Stop', button_color=('white', 'firebrick3'), disabled=True)],
-          [sg.Button('Stunnel', disabled=True, button_color=('white', 'springgreen4')), sg.Button('READ ME')]]
+          [sg.Button('Start NGINX', button_color=('white', 'springgreen4')), sg.Button('Restart NGINX', button_color=('white', 'black'), disabled=True),
+           sg.Button('Stop NGINX', button_color=('white', 'firebrick3'), disabled=True)],
+          [sg.Button('Start Stunnel', disabled=True, button_color=('white', 'springgreen4')), sg.Button('READ ME')]]
 
 
 # Create the Window
@@ -30,7 +30,7 @@ window = sg.Window('MultiStream Config', layout)
 window.Finalize()
 
 if (os.path.isfile('C:\\Program Files (x86)\\stunnel\\config\\stunnel.conf')):
-    window['Stunnel'].update(disabled=False)
+    window['Start Stunnel'].update(disabled=False)
 
 # with open(filename, 'r') as file:
 #         data = file.readlines()
@@ -68,7 +68,7 @@ while True:
         break
 
     # Start everything
-    if event in ('Start'):
+    if event in ('Start NGINX'):
 
         if(values[0]):
             data[28] = '    			push rtmp://a.rtmp.youtube.com/live2/' + \
@@ -85,8 +85,8 @@ while True:
 
         subprocess.call(startPath)
         # [r'./nginx/stop.bat'])
-        window['Start'].update(disabled=True)
-        window['Stop'].update(disabled=False)
+        window['Start NGINX'].update(disabled=True)
+        window['Stop NGINX'].update(disabled=False)
         window['Restart NGINX'].update(disabled=False)
 
     # Restart NGINX
@@ -107,11 +107,11 @@ while True:
         subprocess.call(startPath)
 
     # Stop NGINX
-    if event in ('Stop'):
+    if event in ('Stop NGINX'):
         print('Stoping Nginx and Stunnel')
         subprocess.Popen(stopPath)
-        window['Start'].update(disabled=False)
-        window['Stop'].update(disabled=True)
+        window['Start NGINX'].update(disabled=False)
+        window['Stop NGINX'].update(disabled=True)
         window['Restart NGINX'].update(disabled=True)
 
     # Open Read Me
@@ -120,7 +120,7 @@ while True:
         subprocess.Popen(['notepad.exe', 'README.txt'])
 
     # Start Stunnel
-    if event in ('Stunnel'):
+    if event in ('Start Stunnel'):
         subprocess.Popen('C:/Program Files (x86)/stunnel/bin/stunnel.exe')
 
 window.close()
